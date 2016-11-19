@@ -1,0 +1,157 @@
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration build-checksum="336919548" file="/Users/jorge/Documents/MATLAB/HITCAL/HITCAL4/HITCal.prj" location="/Users/jorge/Documents/MATLAB/HITCAL/HITCAL4" name="HITCal" preferred-package-location="/Users/jorge/Documents/MATLAB/HITCAL/HITCAL4/HITCal/for_redistribution" preferred-package-type="package.type.app" target="target.ezdeploy.standalone" target-name="Application Compiler">
+    <param.appname>HITCal</param.appname>
+    <param.icon>${PROJECT_ROOT}/HITCal_resources/icon.icns</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}/HITCal_resources/icon_48.png</file>
+      <file>${PROJECT_ROOT}/HITCal_resources/icon_32.png</file>
+      <file>${PROJECT_ROOT}/HITCal_resources/icon_24.png</file>
+      <file>${PROJECT_ROOT}/HITCal_resources/icon_16.png</file>
+    </param.icons>
+    <param.version>4.0</param.version>
+    <param.authnamewatermark>The HITCal Team</param.authnamewatermark>
+    <param.email>audcal@outlook.com</param.email>
+    <param.company>HITCal Team</param.company>
+    <param.summary>vHIT extended analysis</param.summary>
+    <param.description>License: Creative Commons(by-nc)
+----------------------
+- NOT FOR CLINICAL USE  -
+----------------------</param.description>
+    <param.screenshot />
+    <param.guid />
+    <param.installpath.string>HITCal</param.installpath.string>
+    <param.installpath.combo>option.installpath.systemwideapp</param.installpath.combo>
+    <param.logo />
+    <param.install.notes>In the following directions, replace MCR_ROOT by the directory where the MATLAB Runtime is installed on the target machine.
+
+If the environment variable DYLD_LIBRARY_PATH is undefined, set it to the concatenation of the following strings:
+
+    MCR_ROOT/v90/runtime/maci64:
+    MCR_ROOT/v90/sys/os/maci64:
+    MCR_ROOT/v90/bin/maci64
+
+If it is defined, set it to the concatenation of these strings:
+
+    ${LD_LIBRARY_PATH}: 
+    MCR_ROOT/v90/runtime/maci64:
+    MCR_ROOT/v90/sys/os/maci64:
+    MCR_ROOT/v90/bin/maci64</param.install.notes>
+    <param.target.install.notes />
+    <param.intermediate>${PROJECT_ROOT}/HITCal/for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}/HITCal/for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}/HITCal/for_redistribution</param.output>
+    <param.enable.clean.build>false</param.enable.clean.build>
+    <param.user.defined.mcr.options />
+    <param.embed.ctf>true</param.embed.ctf>
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.support.packages />
+    <param.required.mcr.products>
+      <item>35000</item>
+      <item>35010</item>
+      <item>35001</item>
+    </param.required.mcr.products>
+    <param.web.mcr>false</param.web.mcr>
+    <param.package.mcr>true</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>HITCAL_4_web</param.web.mcr.name>
+    <param.package.mcr.name>HitCal_cpt</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.windows.command.prompt>false</param.windows.command.prompt>
+    <param.create.log>false</param.create.log>
+    <param.log.file />
+    <unset>
+      <param.screenshot />
+      <param.guid />
+      <param.installpath.combo />
+      <param.logo />
+      <param.target.install.notes />
+      <param.intermediate />
+      <param.files.only />
+      <param.output />
+      <param.enable.clean.build />
+      <param.user.defined.mcr.options />
+      <param.embed.ctf />
+      <param.target.type />
+      <param.support.packages />
+      <param.no.mcr />
+      <param.no.mcr.name />
+      <param.windows.command.prompt />
+      <param.create.log />
+      <param.log.file />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}/HitCal.m</file>
+    </fileset.main>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}/1.xml</file>
+      <file>${PROJECT_ROOT}/2.xml</file>
+      <file>${PROJECT_ROOT}/3.xml</file>
+      <file>${PROJECT_ROOT}/AUC.fig</file>
+      <file>${PROJECT_ROOT}/AUC.m</file>
+      <file>${PROJECT_ROOT}/HitCal.fig</file>
+      <file>${PROJECT_ROOT}/SPV.fig</file>
+      <file>${PROJECT_ROOT}/SPV.m</file>
+      <file>${PROJECT_ROOT}/SPVR.m</file>
+      <file>${PROJECT_ROOT}/about.fig</file>
+      <file>${PROJECT_ROOT}/about.m</file>
+      <file>${PROJECT_ROOT}/leer.m</file>
+      <file>${PROJECT_ROOT}/logo.mat</file>
+      <file>${PROJECT_ROOT}/low.m</file>
+      <file>${PROJECT_ROOT}/structure.fig</file>
+      <file>${PROJECT_ROOT}/structure.m</file>
+    </fileset.resources>
+    <fileset.package />
+    <fileset.depfun />
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="splash.png" optional="false">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL4/HITCal/for_testing/splash.png</file>
+      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="readme.txt" optional="true">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL4/HITCal/for_testing/readme.txt</file>
+      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="run_HITCal.sh" optional="false">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL4/HITCal/for_testing/run_HITCal.sh</file>
+      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="HITCal.app" optional="false">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL4/HITCal/for_testing/HITCal.app</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>/Applications/MATLAB_R2015b.app</root>
+      <toolboxes>
+        <toolbox name="matlabhdlcoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="embeddedcoder" />
+        <toolbox name="matlabcoder" />
+      </toolboxes>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>true</unix>
+      <mac>true</mac>
+      <windows>false</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.12.1</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>maci64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
