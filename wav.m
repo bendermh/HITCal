@@ -1,0 +1,22 @@
+function [G,HW6,HW5,HW4,HW3,HW2,HW1,EW6,EW5,EW4,EW3,EW2,EW1,HC1,HC2,HC3,HC4,HC5,HC6,EC1,EC2,EC3,EC4,EC5,EC6]=wav(head,eye)
+[c,l] = wavedec(head,8,'sym4');
+HW6 = wrcoef('d',c,l,'sym4',6);
+HW5 = wrcoef('d',c,l,'sym4',5);
+HW4 = wrcoef('d',c,l,'sym4',4);
+HW3 = wrcoef('d',c,l,'sym4',3);
+HW2 = wrcoef('d',c,l,'sym4',2);
+HW1 = wrcoef('d',c,l,'sym4',1);
+[HC1,HC2,HC3,HC4,HC5,HC6] = detcoef(c,l,[1 2 3 4 5 6]);
+headCoeff = HC6;
+[c,l] = wavedec(eye,8,'sym4');
+EW6 = wrcoef('d',c,l,'sym4',6);
+EW5 = wrcoef('d',c,l,'sym4',5);
+EW4 = wrcoef('d',c,l,'sym4',4);
+EW3 = wrcoef('d',c,l,'sym4',3);
+EW2 = wrcoef('d',c,l,'sym4',2);
+EW1 = wrcoef('d',c,l,'sym4',1);
+[EC1,EC2,EC3,EC4,EC5,EC6] = detcoef(c,l,[1 2 3 4 5 6]);
+eyeCoeff = EC6;
+%Gain Value
+[valH,posH]= max(headCoeff);
+G = eyeCoeff(posH)/valH;

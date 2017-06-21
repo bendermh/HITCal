@@ -306,6 +306,7 @@ headmax = ay;
 axes (handles.velocidad);
 hold all
 scatter (ax,ay,150,'*k');
+timeHead = ax;
 text = ['Head impulse peak (v): ' num2str(round(ay(1))) ' º/s'];
 set (handles.text7,'string',text);
 if headmax > 150;
@@ -318,12 +319,14 @@ if headmax > 150;
         ay = bay(1);
         ax = bax(1);
     end
+    timeEye = ax;
+    text = ['Head time: ' num2str(round(timeHead)) ' Eye time: ' num2str(round(timeEye)) ' samples'];
+    set (handles.text14,'string',text);
     axes (handles.velocidad);
     hold all
     scatter (ax,ay,150,'*k');
     text = ['Eye response peak (v): ' num2str(round(ay(1))) ' º/s'];
     set (handles.text8,'string',text);
-    
     [ay,ax] = findpeaks (low(low(low([0;diff(y)]))),'Npeaks',1,'MinPeakDistance',10,'MinPeakHeight',1500);
     headmax = ay;
     axes (handles.aceleracion);
@@ -375,5 +378,6 @@ else
     set (handles.text11,'string','--');
     set (handles.text12,'string','--');
     set (handles.text13,'string','--');
+    set (handles.text14,'string','--');
 end
 %FIN CARGA

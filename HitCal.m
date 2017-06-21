@@ -30,7 +30,7 @@ function varargout = HitCal(varargin)
 
 % Edit the above text to modify the response to help HitCal
 
-% Last Modified by GUIDE v2.5 15-Nov-2016 14:23:32
+% Last Modified by GUIDE v2.5 06-Jun-2017 13:04:33
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -8101,3 +8101,114 @@ newax = copyobj(selected,fig4);
 set(newax, 'units', 'normalized', 'position', [0.13 0.11 0.775 0.815]);
 print(fig4,'-r300','-depsc2', 'Saccades');
 close(fig4);
+
+
+% --------------------------------------------------------------------
+function Untitled_19_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_19 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function Untitled_20_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_20 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+vvor
+
+
+% --- Executes on button press in pushbutton23.
+function pushbutton23_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton23 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%FOURIER EXPERIMENTAL
+global vhgencabizq vhgenojoizq actual
+head = (vhgencabizq(:,actual));
+eye = (vhgenojoizq(:,actual));
+[fH,pH] = fourier(head);
+[fE,pE] = fourier(eye);
+%Plots
+figureFourier = figure('name','Fourier ANALYSIS','Position',[5 5 800 550]);
+hold on
+stem(fH,pH,'b');
+title('Single-Side Amplitude Spectrum of Head and Eye')
+xlabel('f (Hz)')
+ylabel('|P1(f)|')
+xlim([0 50])
+stem(fE,pE,'r');
+legend('Head','Eye')
+hold off
+[maxValHead,posMaxHead] = max(pH);
+frecMaxHead = fH(posMaxHead);
+[c,index] = min(abs(fE-frecMaxHead));
+frqEyeValue = fE(index);
+fourierGain = pE(index)/maxValHead;
+display(fourierGain)
+mTextBox = uicontrol('style','text');
+result = strcat('Fourier Gain: ',num2str(fourierGain),' measured at(Hz): ',num2str(frqEyeValue));
+set(mTextBox,'String',result)
+set(mTextBox,'FontSize',12)
+set(mTextBox,'Position',[5 5 400 25])
+set(figureFourier,'MenuBar','figure')
+
+% --------------------------------------------------------------------
+function Untitled_21_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_21 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global vhgencabizq vhgenojoizq
+[archivo,directorio] = uiputfile('*.mat','Save data to .mat file','impulses.mat');
+if archivo == 0
+    return
+end
+dirinicial = cd;
+cd(directorio)
+headData = vhgencabizq;
+eyeData = vhgenojoizq;
+save (archivo,'headData','eyeData')
+cd(dirinicial)
+
+
+% --- Executes on button press in pushbutton26.
+function pushbutton26_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton26 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global vhgencabizq vhgenojoizq ganac
+headData = vhgencabizq;
+eyeData = vhgenojoizq;
+[~,tam]= size(headData);
+pos = 1;
+wGain = [];
+while pos <= tam
+    [Gain,HW6,HW5,HW4,HW3,HW2,HW1,EW6,EW5,EW4,EW3,EW2,EW1,HC1,HC2,HC3,HC4,HC5,HC6,EC1,EC2,EC3,EC4,EC5,EC6] = wav(headData(1:100,pos),eyeData(1:100,pos));
+    wGain = vertcat(wGain,Gain);
+    pos = pos + 1;
+end
+statistics = questdlg( num2str(mean(wGain)),'Wavelet method vHIT Gain','Ok','Output Statistics','Ok');
+if strcmp(statistics,'Output Statistics')
+    display(wGain,'Wavelet gain')
+    display(std(wGain),'Wavelet SD')
+    display((ganac)*0.0001,'AUC gain')
+    display(std((ganac)*0.0001),'AUC SD')
+end
+
+
+% --- Executes on button press in pushbutton27.
+function pushbutton27_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton27 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global tipo isLeft
+if strcmp(tipo, 'SHIMP Lateral')
+    if get(handles.popupmenu2,'Value') == 1
+        isLeft = 1;
+    else
+        isLeft = 0;
+    end
+    shimp
+else
+    warndlg('The actual selected impulse is not a SHIMP impulse, please select a SHIMP impulse to run this mode','Not SHIMP')
+end
