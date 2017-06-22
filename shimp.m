@@ -97,7 +97,7 @@ while pos <= sizeRAW
     [EnegativeValue,EnegativeLocation,EnegativeWidth,EnegativeProminence] = findpeaks(-eyeData(:,pos),'NPeaks',1,'MinPeakProminence',80);
     [HpositiveValue,HpositiveLocation,HpositiveWidth,HpositiveProminence] = findpeaks(headData(:,pos),'NPeaks',1,'MinPeakProminence',80);
     %Peak prominence correction (sometimes it is not well computed)
-    if EnegativeValue < 45
+    if EnegativeValue < 85
         EnegativeValue = NaN;
         EnegativeLocation = NaN;
         EnegativeWidth = NaN;
