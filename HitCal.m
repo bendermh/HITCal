@@ -1,12 +1,12 @@
 function varargout = HitCal(varargin)
-%      HITCAL by Jorge Rey © 2014 under license: 
+%      HITCAL by Jorge Rey Â© 2014 under license: 
 %      Creative Commons (by-nc)
 %      NOT FOR CLINICAL USE
 %
 %
-%      La versión 2.1 de HitCal pasa a denominarse NeuralHIT
+%      La versiÃ³n 2.1 de HitCal pasa a denominarse NeuralHIT
 %      -JORGE REY 2014-
-%      La versión 2.2 de HITCal vuelve a llamarse HITCal
+%      La versiÃ³n 2.2 de HITCal vuelve a llamarse HITCal
 %      HitCal MATLAB code for HitCal.fig
 %      HitCal, by itself, creates a new HitCal or raises the existing
 %      singleton*.
@@ -116,7 +116,7 @@ global icono
 try
     about
 catch
-    msgbox('HIT Analysis software. Jorge Rey Martínez. Copyright (C)2016.','HitCal','custom',icono);
+    msgbox('HIT Analysis software. Jorge Rey MartÃ­nez. Copyright (C)2016.','HitCal','custom',icono);
     
 end
 
@@ -134,7 +134,7 @@ end
 try
     cd (directorio);
 catch
-    msgbox('Filesystem error, change directory or file names (do not use not english characters, like the spanish: ñ or á,é,í,ó,ú...)', 'ERROR','error');
+    msgbox('Filesystem error, change directory or file names (do not use not english characters, like the spanish: Ã± or Ã¡,Ã©,Ã­,Ã³,Ãº...)', 'ERROR','error');
     return
 end
 try
@@ -682,7 +682,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO aÃ±adir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -822,7 +822,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y cálculos de grupo de impulso
+%Dibujar y cÃ¡lculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -845,7 +845,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para cálculos
+%Ajuste de matrices para cÃ¡lculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -922,7 +922,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 está sin ajustar en la velocidad ¿?
+%El elemento 1 estÃ¡ sin ajustar en la velocidad Â¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -959,7 +959,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%Cálculos coef.var
+%CÃ¡lculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -1105,7 +1105,7 @@ if a > 0
     for p = 1:1:b
         
         if lmaxposojo(1,p)>mean(lmaxposojo(1,:))+20 || lmaxposojo(1,p)<mean(lmaxposojo(1,:))-20
-            % if lmaxvalojo(1,p) < 220 ¿Identificamos sacadas covert, no tengo claro?
+            % if lmaxvalojo(1,p) < 220 Â¿Identificamos sacadas covert, no tengo claro?
             out = horzcat(out,p);
             
         end
@@ -1132,7 +1132,7 @@ if a > 0
 end
 [tam,impuls] = size(lmaxposojo);
 
-% Gráfico de maximos
+% GrÃ¡fico de maximos
 axes (handles.todos);
 cla;
 hold all
@@ -1194,7 +1194,7 @@ for p=1:1:impuls
     end
     
 end
-% Cálculos
+% CÃ¡lculos
 
 pr1 = 0;
 pr2 = 0;
@@ -1482,7 +1482,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO aÃ±adir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -1623,7 +1623,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y cálculos de grupo de impulso
+%Dibujar y cÃ¡lculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -1646,7 +1646,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para cálculos
+%Ajuste de matrices para cÃ¡lculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -1723,7 +1723,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 está sin ajustar en la velocidad ¿?
+%El elemento 1 estÃ¡ sin ajustar en la velocidad Â¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -1760,7 +1760,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%Cálculos coef.var
+%CÃ¡lculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -2268,7 +2268,7 @@ if get(hObject,'Value') == 2;
     posg = [num2str(actual) '/' num2str(tam)];
     set(handles.text10,'string',posg);
     
-    %Dibujar y cálculos de grupo de impulso
+    %Dibujar y cÃ¡lculos de grupo de impulso
     
     n=1;
     n2=1;
@@ -2291,7 +2291,7 @@ if get(hObject,'Value') == 2;
     xlim ([0 175]);
     %ylim ([-75 350]);
     
-    %Ajuste de matrices para cálculos
+    %Ajuste de matrices para cÃ¡lculos
     t1=maxojo(:,2);
     v1=maxojo(:,1);
     t2=maxojo(:,4);
@@ -2368,7 +2368,7 @@ if get(hObject,'Value') == 2;
         v3(1)=[];
     end
     
-    %El elemento 1 está sin ajustar en la velocidad ¿?
+    %El elemento 1 estÃ¡ sin ajustar en la velocidad Â¿?
     [n,c]=size(v3);
     while n>1
         if v3(n)==0
@@ -2406,7 +2406,7 @@ if get(hObject,'Value') == 2;
     end
     
     
-    %Cálculos coef.var
+    %CÃ¡lculos coef.var
     
     [n,c]=size(t1);
     [n2,c]=size(t2);
@@ -2890,7 +2890,7 @@ else
     posg = [num2str(actual) '/' num2str(tam)];
     set(handles.text10,'string',posg);
     
-    %Dibujar y cálculos de grupo de impulso
+    %Dibujar y cÃ¡lculos de grupo de impulso
     
     n=1;
     n2=1;
@@ -2913,7 +2913,7 @@ else
     xlim ([0 175]);
     %ylim ([-75 350]);
     
-    %Ajuste de matrices para cálculos
+    %Ajuste de matrices para cÃ¡lculos
     t1=maxojo(:,2);
     v1=maxojo(:,1);
     t2=maxojo(:,4);
@@ -2990,7 +2990,7 @@ else
         v3(1)=[];
     end
     
-    %El elemento 1 está sin ajustar en la velocidad ¿?
+    %El elemento 1 estÃ¡ sin ajustar en la velocidad Â¿?
     [n,c]=size(v3);
     while n>1
         if v3(n)==0
@@ -3028,7 +3028,7 @@ else
     end
     
     
-    %Cálculos coef.var
+    %CÃ¡lculos coef.var
     
     [n,c]=size(t1);
     [n2,c]=size(t2);
@@ -3729,9 +3729,9 @@ line (95:134,345,'color', 'white','LineWidth',2);
 line (135:175,345,'color', 'black','LineWidth',2);
 %ylim ([-75 350])
 
-%Dibujar y cálculos de grupo de impulso
+%Dibujar y cÃ¡lculos de grupo de impulso
 
-%Ajuste de matrices para cálculos
+%Ajuste de matrices para cÃ¡lculos
 [tama olvida] = size(listae);
 n = 1;
 n2 = 1;
@@ -3754,7 +3754,7 @@ plot(vhgencabizqx,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para cálculos
+%Ajuste de matrices para cÃ¡lculos
 t1=maxojox(:,2);
 v1=maxojox(:,1);
 t2=maxojox(:,4);
@@ -3831,7 +3831,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 está sin ajustar en la velocidad ¿?
+%El elemento 1 estÃ¡ sin ajustar en la velocidad Â¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -3868,7 +3868,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%Cálculos coef.var
+%CÃ¡lculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -3985,7 +3985,7 @@ end
 
 listae(actual) = get(hObject,'Value');
 % Recalcular y redibujar resultados
-%Dibujar y cálculos de grupo de impulso
+%Dibujar y cÃ¡lculos de grupo de impulso
 [tama olvida] = size(listae);
 n = 1;
 n2 = 1;
@@ -4008,7 +4008,7 @@ plot(vhgencabizqx,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para cálculos
+%Ajuste de matrices para cÃ¡lculos
 t1=maxojox(:,2);
 v1=maxojox(:,1);
 t2=maxojox(:,4);
@@ -4085,7 +4085,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 está sin ajustar en la velocidad ¿?
+%El elemento 1 estÃ¡ sin ajustar en la velocidad Â¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -4122,7 +4122,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%Cálculos coef.var
+%CÃ¡lculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -5100,7 +5100,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO aÃ±adir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -5240,7 +5240,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y cálculos de grupo de impulso
+%Dibujar y cÃ¡lculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -5263,7 +5263,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para cálculos
+%Ajuste de matrices para cÃ¡lculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -5340,7 +5340,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 está sin ajustar en la velocidad ¿?
+%El elemento 1 estÃ¡ sin ajustar en la velocidad Â¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -5377,7 +5377,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%Cálculos coef.var
+%CÃ¡lculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -6246,7 +6246,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO aÃ±adir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -6386,7 +6386,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y cálculos de grupo de impulso
+%Dibujar y cÃ¡lculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -6409,7 +6409,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para cálculos
+%Ajuste de matrices para cÃ¡lculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -6486,7 +6486,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 está sin ajustar en la velocidad ¿?
+%El elemento 1 estÃ¡ sin ajustar en la velocidad Â¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -6523,7 +6523,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%Cálculos coef.var
+%CÃ¡lculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -7406,7 +7406,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO aÃ±adir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -7546,7 +7546,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y cálculos de grupo de impulso
+%Dibujar y cÃ¡lculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -7569,7 +7569,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para cálculos
+%Ajuste de matrices para cÃ¡lculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -7646,7 +7646,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 está sin ajustar en la velocidad ¿?
+%El elemento 1 estÃ¡ sin ajustar en la velocidad Â¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -7683,7 +7683,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%Cálculos coef.var
+%CÃ¡lculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -8201,8 +8201,9 @@ function pushbutton27_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton27 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global tipo isLeft
-if strcmp(tipo, 'SHIMP Lateral')
+global isLeft
+tipo_act = get(handles.text19,'string');
+if strcmp(tipo_act, 'Test plane: SHIMP Lateral')
     if get(handles.popupmenu2,'Value') == 1
         isLeft = 1;
     else
