@@ -1,6 +1,10 @@
-# HITCal 5.0
+# HITCal 5.2
 ICS IMPULSE vHIT files enhanced exploration
 
 HITCal source code to explore vHIT files using MATLAB (macOS version).
 
-© 2014-2017 Jorge Rey Martinez.
+New on this version:
+Take-off analyisis tool
+Desaccade eye algoritm
+
+© 2014-2018 Jorge Rey Martinez.
