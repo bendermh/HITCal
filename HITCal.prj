@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="395263215" file="/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_1/HITCal.prj" location="/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_1" name="HITCal" preferred-package-location="/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_1/HITCal/for_redistribution" preferred-package-type="package.type.app" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="353641978" file="/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_2/HITCal.prj" location="/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_2" name="HITCal" preferred-package-location="/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_2/HITCal/for_redistribution" preferred-package-type="package.type.app" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>HITCal</param.appname>
     <param.icon>${PROJECT_ROOT}/HITCal_resources/icon.icns</param.icon>
     <param.icons>
@@ -8,7 +8,7 @@
       <file>${PROJECT_ROOT}/HITCal_resources/icon_24.png</file>
       <file>${PROJECT_ROOT}/HITCal_resources/icon_16.png</file>
     </param.icons>
-    <param.version>5.1</param.version>
+    <param.version>5.2</param.version>
     <param.authnamewatermark>The HITCal Team</param.authnamewatermark>
     <param.email>audcal@outlook.com</param.email>
     <param.company>HITCal Team</param.company>
@@ -53,7 +53,7 @@ If it is defined, set it to the concatenation of these strings:
     <param.web.mcr>false</param.web.mcr>
     <param.package.mcr>true</param.package.mcr>
     <param.no.mcr>false</param.no.mcr>
-    <param.web.mcr.name>HITCAL_4_web</param.web.mcr.name>
+    <param.web.mcr.name>HITCAL_5_web</param.web.mcr.name>
     <param.package.mcr.name>HITCal_SETUP</param.package.mcr.name>
     <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
     <param.windows.command.prompt>false</param.windows.command.prompt>
@@ -92,9 +92,12 @@ If it is defined, set it to the concatenation of these strings:
       <file>${PROJECT_ROOT}/SPV.fig</file>
       <file>${PROJECT_ROOT}/SPV.m</file>
       <file>${PROJECT_ROOT}/SPVR.m</file>
+      <file>${PROJECT_ROOT}/Toff.fig</file>
+      <file>${PROJECT_ROOT}/Toff.m</file>
       <file>${PROJECT_ROOT}/about.fig</file>
       <file>${PROJECT_ROOT}/about.m</file>
       <file>${PROJECT_ROOT}/analize.m</file>
+      <file>${PROJECT_ROOT}/dessacade.m</file>
       <file>${PROJECT_ROOT}/fourier.m</file>
       <file>${PROJECT_ROOT}/isOctave.m</file>
       <file>${PROJECT_ROOT}/leer.m</file>
@@ -112,10 +115,10 @@ If it is defined, set it to the concatenation of these strings:
     <fileset.package />
     <fileset.depfun />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="splash.png" optional="false">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_1/HITCal/for_testing/splash.png</file>
-      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="readme.txt" optional="true">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_1/HITCal/for_testing/readme.txt</file>
-      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="run_HITCal.sh" optional="false">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_1/HITCal/for_testing/run_HITCal.sh</file>
-      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="HITCal.app" optional="false">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_1/HITCal/for_testing/HITCal.app</file>
+      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="run_HITCal.sh" optional="false">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_2/HITCal/for_testing/run_HITCal.sh</file>
+      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="splash.png" optional="false">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_2/HITCal/for_testing/splash.png</file>
+      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="readme.txt" optional="true">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_2/HITCal/for_testing/readme.txt</file>
+      <file location="${PROJECT_ROOT}/HITCal/for_testing" name="HITCal.app" optional="false">/Users/jorge/Documents/MATLAB/HITCAL/HITCAL5_2/HITCal/for_testing/HITCal.app</file>
     </build-deliverables>
     <workflow />
     <matlab>
@@ -156,7 +159,7 @@ If it is defined, set it to the concatenation of these strings:
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>10.12.5</osver>
+      <osver>10.13.3</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>maci64</arch>
