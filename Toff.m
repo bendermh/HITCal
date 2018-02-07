@@ -111,8 +111,8 @@ ylim('auto')
 xlim ([0 61])
 xlabel('Time in samples')
 ylabel('Velocity in degrees/s')
-impulseOjo = find(tspojo > 15);
-impulseCabeza = find(tspcabeza > 15);
+impulseOjo = find(tspojo(:,actual3) > 15);
+impulseCabeza = find(tspcabeza(:,actual3) > 15);
 startCabeza = impulseCabeza(1);
 tooDelay = 0;
 % to check if there is eye response
@@ -173,9 +173,9 @@ peaks = [];
 peaksGains = max(destspojo)./max(tspcabeza);
 while iter5 <= tamano3
     if ~ErasedTOF(iter5)
-        impulseOjo = find(tspojo > 15);
-        impulseCabeza = find(tspcabeza > 15);
-        startCabeza = impulseCabeza(iter5);
+        impulseOjo = find(tspojo(:,iter5) > 15);
+        impulseCabeza = find(tspcabeza(:,iter5) > 15);
+        startCabeza = impulseCabeza(1);
         tooDelay = 0;
         % to check if there is eye response
         if isempty(impulseOjo)
@@ -187,11 +187,11 @@ while iter5 <= tamano3
         if startOjo > 25
             tooDelay = 1;
         end
+        
         [a,~,~]= analizeTOF(tspcabeza(:,iter5),tspojo(:,iter5),startCabeza,startOjo,windowSize);
         selectedA = vertcat(selectedA,a);
         selectedAUC = vertcat(selectedAUC,gananciasCorr(iter5));
-        size(modifiedPeaks)
-        iter5
+        size(modifiedPeaks);
         if modifiedPeaks(iter5) == 0
             peaks = vertcat(peaks,peaksGains(iter5));
         else
