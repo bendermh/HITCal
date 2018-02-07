@@ -97,7 +97,7 @@ if modifiedPeaks(actual3) == 0
     set(handles.edit1,'string',num2str(eyePeakPos));
 else
     eyePeakPos = modifiedPeaks(actual3);
-    preEye = destspojo(:,actual3);
+    preEye = tspojo(:,actual3);
     eyePeak = preEye(eyePeakPos);
     set(handles.edit1,'string',num2str(eyePeakPos));
 end
@@ -167,10 +167,18 @@ function displayAll(handles)
 global tspojo tspcabeza gananciasCorr ErasedTOF windowSize destspojo modifiedPeaks
 [~,tamano3] = size (tspcabeza);
 iter5 = 1;
+iter6 = 1;
 selectedA = [];
 selectedAUC = [];
 peaks = [];
-peaksGains = max(destspojo)./max(tspcabeza);
+peaksGains = zeros(tamano3,1);
+while iter6 <= tamano3
+    [ev,ep] = max(destspojo(:,iter6));
+    preh = tspcabeza(:,iter6);
+    hv = preh(ep);
+    peaksGains(iter6) = ev/hv;
+    iter6 = iter6+1;
+end
 while iter5 <= tamano3
     if ~ErasedTOF(iter5)
         impulseOjo = find(tspojo(:,iter5) > 15);
@@ -195,9 +203,12 @@ while iter5 <= tamano3
         if modifiedPeaks(iter5) == 0
             peaks = vertcat(peaks,peaksGains(iter5));
         else
-            allEyeData = destspojo(:,iter5);
+            allEyeData = tspojo(:,iter5);
             allHeadData = tspcabeza(:,iter5);
-            peaks = vertcat(peaks,(allEyeData(modifiedPeaks(iter5))/allHeadData(modifiedPeaks(iter5))));
+            mev = allEyeData(modifiedPeaks(iter5));
+            mhv = allHeadData(modifiedPeaks(iter5));
+            
+            peaks = vertcat(peaks,mev/mhv);
         end
     end
     iter5 = iter5 + 1;
