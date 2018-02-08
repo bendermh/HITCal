@@ -2,23 +2,23 @@ function [ desacadedData ] = dessacade( rawData )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 [~,endData] = size(rawData);
-iter = 1;
+iter8 = 1;
 desacadedData = [];
-while iter <= endData
-    corData = desacA(rawData(:,iter));
+while iter8 <= endData
+    corData = desacA(rawData(:,iter8));
     desacadedData = vertcat(desacadedData,corData.');
-    iter = iter + 1;
+    iter8 = iter8 + 1;
 end
 desacadedData = desacadedData.';
 end
 function [corrected] = desacA(rawImpulse)
 accel = diff(rawImpulse);
-[tama,~] = size(accel);
+[tama9,~] = size(accel);
 iter2 = 1;
-accelPos = zeros(1,tama);
-accelNeg = zeros(1,tama);
+accelPos = zeros(1,tama9);
+accelNeg = zeros(1,tama9);
 %Split in two psotive matrix
-while iter2 <= tama
+while iter2 <= tama9
 if accel(iter2)> 0
     accelPos(iter2) = accel(iter2);
 end
@@ -46,6 +46,17 @@ if loc+ancho < 61
 else
     accelNeg(1,loc-ancho:61) = 0;
 end
+%Umbalanced split on some impulses,unknown reason!
+[~,tamP] = size(accelPos);
+[~,tamN] = size(accelNeg);
+if ~(tamP==tamN)
+    if tamP>60
+        accelPos = accelPos(1,1:60);
+    else
+        accelNeg = accelNeg(1,1:60);
+    end
+end
+
 x = (1:61).';
 y = horzcat((accelPos-accelNeg),0).';
 corrected = (cumtrapz(x,y)+rawImpulse(1));
