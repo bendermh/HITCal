@@ -85,7 +85,7 @@ varargout{1} = handles.output;
 
 function displayOne(handles)
 global actual3 tspojo tspcabeza windowSize gananciasCorr destspojo modifiedPeaks
-%Gráficos
+%GrÃ¡ficos
 axes (handles.singlePlot);
 hold all
 cla
@@ -135,7 +135,7 @@ xRegH = xRegH + (startCabeza - 3);
 xRegE = xRegE + (startOjo - 3);
 plot(xRegH,regH,'--','color','blue','LineWidth',2)
 plot(xRegE,regE,'--','color',[1 0.5 0],'LineWidth',2)
-title(strcat('Angle a:', num2str(a),' º'));
+title(strcat('Angle a:', num2str(a),' Âº'));
 axes (handles.polarPlot);
 hold all;
 [x,y] = pol2cart(a*pi/180,1);
@@ -146,7 +146,7 @@ else
     compass(x,y,'r')
 end
 %Output Data
-angleString = ['This impulse alpha angle: ' num2str(a) 'º'];
+angleString = ['This impulse alpha angle: ' num2str(a) 'Âº'];
 gainString = ['This impulse AUC gain: ' num2str(gananciasCorr(actual3))];
 peakString = ['This impulse peak gain: ' num2str(eyePeak/headPeak)];
 set(handles.text8,'string',angleString);
@@ -213,7 +213,7 @@ while iter5 <= tamano3
     end
     iter5 = iter5 + 1;
 end
-angleString = ['ALL impulses alpha angle: ' num2str(mean(selectedA)) 'º' ' (SD: ' num2str(std(selectedA)) 'º)'];
+angleString = ['ALL impulses alpha angle: ' num2str(mean(selectedA)) 'Âº' ' (SD: ' num2str(std(selectedA)) 'Âº)'];
 gainString = ['ALL impulses AUC gain: ' num2str(mean(selectedAUC)) ' (SD: ' num2str(std(selectedAUC)) ')'];
 peaksString = ['ALL impulses peak gain: ' num2str(mean(peaks)) ' (SD: ' num2str(std(peaks)) ')'];
 set(handles.text14,'string',angleString);
@@ -247,6 +247,9 @@ else
     slopeH = xH.'\headD;
     slopeE = xE.'\eyeD;
     angle = (atan(abs(slopeE-slopeH)/(1+slopeE*slopeH)))*(180/pi);
+end
+if slopeE > slopeH
+    angle = angle*-1;
 end
 
 
