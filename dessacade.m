@@ -59,5 +59,10 @@ end
 
 x = (1:61).';
 y = horzcat((accelPos-accelNeg),0).';
+
+[tamY,~] = size(y);
+if tamY > 61
+    y = y(1:61,1);
+end
 corrected = (cumtrapz(x,y)+rawImpulse(1));
 end
