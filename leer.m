@@ -39,7 +39,8 @@ decimal = char(ff.getTextContent);
 hh = gg.item(53).getChildNodes;
 separa = char(hh.getTextContent);
 if strcmp(version,'4.0.37')
- hh = gg.item(65).getChildNodes;
+ hh = gg.item(63).getChildNodes;
+ %en algunas versiones hh = gg.item(65).getChildNodes;
 separa = char(hh.getTextContent);   
 end
 %if separa ~= ';' || separa ~= ','
@@ -79,7 +80,8 @@ if strcmp(modulo,'[VW_HITest: null]') || strcmp(modulo,'[HITest: null]') || strc
 g = f.getChildNodes;
 fr = g.item(69).getChildNodes;
 if strcmp(version,'4.0.37')
-    fr = g.item(81).getChildNodes;
+    %en algunas versiones fr = g.item(81).getChildNodes;
+    fr = g.item(79).getChildNodes;
 end
 %punto25 = fr.getFirstChild;
 tipo = char(fr.getTextContent);
