@@ -1,4 +1,4 @@
-# HITCal 5.2
+# HITCal 5.3
 ICS IMPULSE vHIT files enhanced exploration
 
 HITCal source code to explore vHIT files using MATLAB (macOS version).
