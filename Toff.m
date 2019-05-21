@@ -22,7 +22,7 @@ function varargout = Toff(varargin)
 
 % Edit the above text to modify the response to help Toff
 
-% Last Modified by GUIDE v2.5 02-Feb-2018 10:11:14
+% Last Modified by GUIDE v2.5 13-Apr-2018 10:09:18
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -68,7 +68,7 @@ function varargout = Toff_OutputFcn(hObject, eventdata, handles)
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global vhgencabizq vhgenojoizq actual3 tspojo tspcabeza ErasedTOF windowSize ganac gananciasCorr destspojo modifiedPeaks;
+global vhgencabizq vhgenojoizq actual3 tspojo tspcabeza ErasedTOF windowSize ganac gananciasCorr destspojo modifiedPeaks potoN potoD;
 windowSize = 0;
 actual3 = 1;
 tspcabeza = vhgencabizq(20:80,:);
@@ -78,6 +78,10 @@ destspojo = dessacade(tspojo);
 [~,b] = size(tspcabeza);
 ErasedTOF = zeros(b,1);
 modifiedPeaks = zeros(b,1);
+potoN = 3;
+potoD = 0.005;
+set(handles.edit2,'string',num2str(potoN))
+set(handles.edit3,'string',num2str(potoD))
 displayOne(handles)
 displayAll(handles)
 % Get default command line output from handles structure
@@ -125,7 +129,7 @@ end
 if startOjo > 25
     tooDelay = 1;
 end
-[a,sH,sE]= analizeTOF(tspcabeza(:,actual3),tspojo(:,actual3),startCabeza,startOjo,windowSize);
+[a,sH,sE,x0,~]= analizeTOF(tspcabeza(:,actual3),tspojo(:,actual3),startCabeza,startOjo,windowSize);
 
 xRegH = (1:20);
 xRegE = (1:20);
@@ -136,6 +140,7 @@ xRegE = xRegE + (startOjo - 3);
 plot(xRegH,regH,'--','color','blue','LineWidth',2)
 plot(xRegE,regE,'--','color',[1 0.5 0],'LineWidth',2)
 title(strcat('Angle a:', num2str(a),' º'));
+plot((x0+startCabeza),tspojo((x0+startCabeza),actual3),'kp','MarkerSize',12);
 axes (handles.polarPlot);
 hold all;
 [x,y] = pol2cart(a*pi/180,1);
@@ -149,15 +154,17 @@ end
 angleString = ['This impulse alpha angle: ' num2str(a) 'º'];
 gainString = ['This impulse AUC gain: ' num2str(gananciasCorr(actual3))];
 peakString = ['This impulse peak gain: ' num2str(eyePeak/headPeak)];
+potoString = ['This impulse PoTo X: ' num2str(x0) ' smp. Y: ' num2str(tspojo((x0+startCabeza))) 'º/s'];
 set(handles.text8,'string',angleString);
 set(handles.text9,'string',gainString);
 set(handles.text16,'string',peakString);
+set(handles.text19,'string',potoString);
 %Plot format
 t = findall(gca,'type','text');
 set(t(16),'String',' ');
 set(t(17),'String',' ');
-set(t(18),'String',' ');
-set(t(19),'String',' ');
+%set(t(18),'String',' ');
+%set(t(19),'String',' ');
 set(t(13),'String',' ');
 set(t(14),'String',' ');
 set(t(15),'String',' ');
@@ -170,6 +177,8 @@ iter5 = 1;
 iter6 = 1;
 selectedA = [];
 selectedAUC = [];
+selectedPoToX = [];
+selectedPoToY = [];
 peaks = [];
 peaksGains = zeros(tamano3,1);
 while iter6 <= tamano3
@@ -196,9 +205,11 @@ while iter5 <= tamano3
             tooDelay = 1;
         end
         
-        [a,~,~]= analizeTOF(tspcabeza(:,iter5),tspojo(:,iter5),startCabeza,startOjo,windowSize);
+        [a,~,~,x0,~]= analizeTOF(tspcabeza(:,iter5),tspojo(:,iter5),startCabeza,startOjo,windowSize);
         selectedA = vertcat(selectedA,a);
         selectedAUC = vertcat(selectedAUC,gananciasCorr(iter5));
+        selectedPoToX = vertcat(selectedPoToX,[x0 startOjo]);
+        selectedPoToY = vertcat(selectedPoToY,tspojo((x0+startOjo),iter5));
         size(modifiedPeaks);
         if modifiedPeaks(iter5) == 0
             peaks = vertcat(peaks,peaksGains(iter5));
@@ -216,11 +227,16 @@ end
 angleString = ['ALL impulses alpha angle: ' num2str(mean(selectedA)) 'º' ' (SD: ' num2str(std(selectedA)) 'º)'];
 gainString = ['ALL impulses AUC gain: ' num2str(mean(selectedAUC)) ' (SD: ' num2str(std(selectedAUC)) ')'];
 peaksString = ['ALL impulses peak gain: ' num2str(mean(peaks)) ' (SD: ' num2str(std(peaks)) ')'];
+potoString = ['All impulses PoTo X: ' num2str(mean(selectedPoToX(:,1))) ' smp. Y: ' num2str(mean(selectedPoToY)) ' º/s' ' (SD: ' num2str(std(selectedPoToX(:,1))) ' - ' num2str(std(selectedPoToY)) ')'];
 set(handles.text14,'string',angleString);
 set(handles.text15,'string',gainString);
 set(handles.text17,'string',peaksString);
+set(handles.text21,'string',potoString)
 
-function [angle,slopeH,slopeE] = analizeTOF(headData,eyeData,startHead,startEye,lenghtData)
+function [angle,slopeH,slopeE,x0,y0] = analizeTOF(headData,eyeData,startHead,startEye,lenghtData)
+global potoN potoD
+x0 = 0;
+y0 = 0;
 if lenghtData == 0
     eyeData = low(eyeData);
     add = 35;
@@ -254,6 +270,11 @@ end
 if slopeE > slopeH
     angle = angle*-1;
 end
+%PoTo Implementation
+output = multifitmatA([xE' eyeData(xE)],potoN,potoD);
+x0 = round(output.x0);
+y0 = output.y0;
+
 
 
 
@@ -355,6 +376,70 @@ end
 % --- Executes during object creation, after setting all properties.
 function edit1_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit2 as text
+%        str2double(get(hObject,'String')) returns contents of edit2 as a double
+global potoN
+if str2double(get(hObject,'String')) >= 0 && str2double(get(hObject,'String')) <= 5.0000001
+potoN = str2double(get(hObject,'String'));
+displayOne(handles)
+displayAll(handles)
+else
+    set(hObject,'string','3')
+    display('Not a number or > 5')
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function edit2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit3_Callback(hObject, eventdata, handles)
+% hObject    handle to edit3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit3 as text
+%        str2double(get(hObject,'String')) returns contents of edit3 as a double
+global potoD
+if str2double(get(hObject,'String')) >= 0 && str2double(get(hObject,'String')) <= 5.000001
+potoD = str2double(get(hObject,'String'));
+displayOne(handles)
+displayAll(handles)
+else
+    set(hObject,'string','0.005')
+    display('Not a number or > 5')
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function edit3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
