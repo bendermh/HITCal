@@ -22,7 +22,7 @@ function varargout = shimp(varargin)
 
 % Edit the above text to modify the response to help shimp
 
-% Last Modified by GUIDE v2.5 06-Jun-2017 20:31:47
+% Last Modified by GUIDE v2.5 15-Aug-2020 15:31:14
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -57,6 +57,9 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
+global shimpThreshold
+shimpThreshold = 80;
+
 
 % UIWAIT makes shimp wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
@@ -71,7 +74,10 @@ function varargout = shimp_OutputFcn(hObject, eventdata, handles)
 
 % Get default command line output from handles structure
 varargout{1} = handles.output;
-global vhgencabizq vhgenojoizq ganac isLeft
+analizeShimp(hObject, eventdata, handles)
+
+function analizeShimp(hObject, eventdata, handles)
+global vhgencabizq vhgenojoizq ganac isLeft shimpThreshold
 gains = (ganac)*0.0001;
 eyeData = vhgenojoizq;
 headData = vhgencabizq;
@@ -94,15 +100,15 @@ covertSaccades = [];
 errors = [];
 while pos <= sizeRAW
     [EpositiveValue,EpositiveLocation,EpositiveWidth,EpositiveProminence] = findpeaks(eyeData(:,pos),'NPeaks',1,'MinPeakProminence',100);
-    [EnegativeValue,EnegativeLocation,EnegativeWidth,EnegativeProminence] = findpeaks(-eyeData(:,pos),'NPeaks',1,'MinPeakProminence',80);
+    [EnegativeValue,EnegativeLocation,EnegativeWidth,EnegativeProminence] = findpeaks(-eyeData(:,pos),'NPeaks',1,'MinPeakProminence',shimpThreshold);
     [HpositiveValue,HpositiveLocation,HpositiveWidth,HpositiveProminence] = findpeaks(headData(:,pos),'NPeaks',1,'MinPeakProminence',80);
     %Peak prominence correction (sometimes it is not well computed)
-    if EnegativeValue < 85
-        EnegativeValue = NaN;
-        EnegativeLocation = NaN;
-        EnegativeWidth = NaN;
-        EnegativeProminence = NaN;
-    end
+     if EnegativeValue < shimpThreshold
+         EnegativeValue = NaN;
+         EnegativeLocation = NaN;
+         EnegativeWidth = NaN;
+         EnegativeProminence = NaN;
+     end
     HeadValues = horzcat(HeadValues,HpositiveValue);
     HeadPosition = horzcat(HeadPosition,HpositiveLocation);
     HeadWidth = horzcat(HeadWidth,HpositiveWidth);
@@ -209,3 +215,29 @@ newax = copyobj(selected,fig5);
 set(newax, 'units', 'normalized', 'position', [0.13 0.11 0.775 0.815]);
 print(fig5,'-r300','-depsc2', 'SHIMP_Saccades');
 close(fig5);
+
+
+% --- Executes on slider movement.
+function slider2_Callback(hObject, eventdata, handles)
+% hObject    handle to slider2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+global shimpThreshold
+shimpThreshold = round(get(hObject,'Value'));
+set(handles.text34,'string',shimpThreshold)
+analizeShimp(hObject, eventdata, handles)
+
+
+% --- Executes during object creation, after setting all properties.
+function slider2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
