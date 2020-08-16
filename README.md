@@ -5,6 +5,6 @@ HITCal source code to explore vHIT files using MATLAB (macOS version).
 
 New on this version:
 Take-off analyisis tool
-Desaccade eye algoritm
+Desaccade eye algorithm
 
 © 2014-2018 Jorge Rey Martinez.
