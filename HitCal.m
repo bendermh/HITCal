@@ -1,12 +1,12 @@
 function varargout = HitCal(varargin)
-%      HITCAL by Jorge Rey Martínez 2014 under license: 
+%      HITCAL by Jorge Rey © 2014 under license: 
 %      Creative Commons (by-nc)
 %      NOT FOR CLINICAL USE
 %
 %
-%      La versi?n 2.1 de HitCal pasa a denominarse NeuralHIT
+%      La versión 2.1 de HitCal pasa a denominarse NeuralHIT
 %      -JORGE REY 2014-
-%      La versi?n 2.2 de HITCal vuelve a llamarse HITCal
+%      La versión 2.2 de HITCal vuelve a llamarse HITCal
 %      HitCal MATLAB code for HitCal.fig
 %      HitCal, by itself, creates a new HitCal or raises the existing
 %      singleton*.
@@ -30,7 +30,7 @@ function varargout = HitCal(varargin)
 
 % Edit the above text to modify the response to help HitCal
 
-% Last Modified by GUIDE v2.5 21-May-2019 07:07:01
+% Last Modified by GUIDE v2.5 23-May-2017 13:31:10
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -75,8 +75,8 @@ custom = 0;
 guarda = 1;
 ord = 0;
 desord = 0;
-%set(handles.inicio,'position',[0    0  290   66])
-set(handles.inicio,'position',[0    0  195.3   49])
+set(handles.inicio,'position',[0    0  290   65])
+%set(handles.inicio,'position',[0    0  195.3   49])
 set(handles.inicio,'string','Wellcome to HITCal: Import XML file to start.');
 set(handles.inicio,'visible','on');
 
@@ -134,7 +134,7 @@ end
 try
     cd (directorio);
 catch
-    msgbox('Filesystem error, change directory or file names (do not use not english characters, like the spanish: ? or ?,?,?,?,?...)', 'ERROR','error');
+    msgbox('Filesystem error, change directory or file names (do not use not english characters, like the spanish: ñ or á,é,í,ó,ú...)', 'ERROR','error');
     return
 end
 try
@@ -682,7 +682,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO a?adir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -822,7 +822,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y c?lculos de grupo de impulso
+%Dibujar y cálculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -845,7 +845,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para c?lculos
+%Ajuste de matrices para cálculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -922,7 +922,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 est? sin ajustar en la velocidad ??
+%El elemento 1 está sin ajustar en la velocidad ¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -959,7 +959,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%C?lculos coef.var
+%Cálculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -1105,7 +1105,7 @@ if a > 0
     for p = 1:1:b
         
         if lmaxposojo(1,p)>mean(lmaxposojo(1,:))+20 || lmaxposojo(1,p)<mean(lmaxposojo(1,:))-20
-            % if lmaxvalojo(1,p) < 220 ?Identificamos sacadas covert, no tengo claro?
+            % if lmaxvalojo(1,p) < 220 ¿Identificamos sacadas covert, no tengo claro?
             out = horzcat(out,p);
             
         end
@@ -1132,7 +1132,7 @@ if a > 0
 end
 [tam,impuls] = size(lmaxposojo);
 
-% Gr?fico de maximos
+% Gráfico de maximos
 axes (handles.todos);
 cla;
 hold all
@@ -1194,7 +1194,7 @@ for p=1:1:impuls
     end
     
 end
-% C?lculos
+% Cálculos
 
 pr1 = 0;
 pr2 = 0;
@@ -1482,7 +1482,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO a?adir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -1623,7 +1623,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y c?lculos de grupo de impulso
+%Dibujar y cálculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -1646,7 +1646,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para c?lculos
+%Ajuste de matrices para cálculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -1723,7 +1723,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 est? sin ajustar en la velocidad ??
+%El elemento 1 está sin ajustar en la velocidad ¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -1760,7 +1760,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%C?lculos coef.var
+%Cálculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -2268,7 +2268,7 @@ if get(hObject,'Value') == 2;
     posg = [num2str(actual) '/' num2str(tam)];
     set(handles.text10,'string',posg);
     
-    %Dibujar y c?lculos de grupo de impulso
+    %Dibujar y cálculos de grupo de impulso
     
     n=1;
     n2=1;
@@ -2291,7 +2291,7 @@ if get(hObject,'Value') == 2;
     xlim ([0 175]);
     %ylim ([-75 350]);
     
-    %Ajuste de matrices para c?lculos
+    %Ajuste de matrices para cálculos
     t1=maxojo(:,2);
     v1=maxojo(:,1);
     t2=maxojo(:,4);
@@ -2368,7 +2368,7 @@ if get(hObject,'Value') == 2;
         v3(1)=[];
     end
     
-    %El elemento 1 est? sin ajustar en la velocidad ??
+    %El elemento 1 está sin ajustar en la velocidad ¿?
     [n,c]=size(v3);
     while n>1
         if v3(n)==0
@@ -2406,7 +2406,7 @@ if get(hObject,'Value') == 2;
     end
     
     
-    %C?lculos coef.var
+    %Cálculos coef.var
     
     [n,c]=size(t1);
     [n2,c]=size(t2);
@@ -2890,7 +2890,7 @@ else
     posg = [num2str(actual) '/' num2str(tam)];
     set(handles.text10,'string',posg);
     
-    %Dibujar y c?lculos de grupo de impulso
+    %Dibujar y cálculos de grupo de impulso
     
     n=1;
     n2=1;
@@ -2913,7 +2913,7 @@ else
     xlim ([0 175]);
     %ylim ([-75 350]);
     
-    %Ajuste de matrices para c?lculos
+    %Ajuste de matrices para cálculos
     t1=maxojo(:,2);
     v1=maxojo(:,1);
     t2=maxojo(:,4);
@@ -2990,7 +2990,7 @@ else
         v3(1)=[];
     end
     
-    %El elemento 1 est? sin ajustar en la velocidad ??
+    %El elemento 1 está sin ajustar en la velocidad ¿?
     [n,c]=size(v3);
     while n>1
         if v3(n)==0
@@ -3028,7 +3028,7 @@ else
     end
     
     
-    %C?lculos coef.var
+    %Cálculos coef.var
     
     [n,c]=size(t1);
     [n2,c]=size(t2);
@@ -3729,9 +3729,9 @@ line (95:134,345,'color', 'white','LineWidth',2);
 line (135:175,345,'color', 'black','LineWidth',2);
 %ylim ([-75 350])
 
-%Dibujar y c?lculos de grupo de impulso
+%Dibujar y cálculos de grupo de impulso
 
-%Ajuste de matrices para c?lculos
+%Ajuste de matrices para cálculos
 [tama olvida] = size(listae);
 n = 1;
 n2 = 1;
@@ -3754,7 +3754,7 @@ plot(vhgencabizqx,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para c?lculos
+%Ajuste de matrices para cálculos
 t1=maxojox(:,2);
 v1=maxojox(:,1);
 t2=maxojox(:,4);
@@ -3831,7 +3831,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 est? sin ajustar en la velocidad ??
+%El elemento 1 está sin ajustar en la velocidad ¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -3868,7 +3868,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%C?lculos coef.var
+%Cálculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -3985,7 +3985,7 @@ end
 
 listae(actual) = get(hObject,'Value');
 % Recalcular y redibujar resultados
-%Dibujar y c?lculos de grupo de impulso
+%Dibujar y cálculos de grupo de impulso
 [tama olvida] = size(listae);
 n = 1;
 n2 = 1;
@@ -4008,7 +4008,7 @@ plot(vhgencabizqx,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para c?lculos
+%Ajuste de matrices para cálculos
 t1=maxojox(:,2);
 v1=maxojox(:,1);
 t2=maxojox(:,4);
@@ -4085,7 +4085,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 est? sin ajustar en la velocidad ??
+%El elemento 1 está sin ajustar en la velocidad ¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -4122,7 +4122,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%C?lculos coef.var
+%Cálculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -4432,7 +4432,7 @@ function text76_ButtonDownFcn(hObject, eventdata, handles)
 % hObject    handle to text76 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-email = 'audcal@outlook.com';
+email = 'HitCal@hotmail.com';
 url = ['mailto:',email];
 web(url)
 
@@ -5100,7 +5100,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO a?adir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -5240,7 +5240,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y c?lculos de grupo de impulso
+%Dibujar y cálculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -5263,7 +5263,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para c?lculos
+%Ajuste de matrices para cálculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -5340,7 +5340,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 est? sin ajustar en la velocidad ??
+%El elemento 1 está sin ajustar en la velocidad ¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -5377,7 +5377,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%C?lculos coef.var
+%Cálculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -6246,7 +6246,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO a?adir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -6347,8 +6347,6 @@ line (45:94,345,'color', 'black','LineWidth',2);
 line (95:134,345,'color', 'white','LineWidth',2);
 line (135:175,345,'color', 'black','LineWidth',2);
 
-%save('expGat.mat','vhgencabizq','vhgenojoizq');
-
 %ylim ([-75 350])
 
 set (handles.text30,'string',maxcabeza(actual,2));
@@ -6388,7 +6386,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y c?lculos de grupo de impulso
+%Dibujar y cálculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -6411,7 +6409,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para c?lculos
+%Ajuste de matrices para cálculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -6488,7 +6486,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 est? sin ajustar en la velocidad ??
+%El elemento 1 está sin ajustar en la velocidad ¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -6525,7 +6523,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%C?lculos coef.var
+%Cálculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -7408,7 +7406,7 @@ end
 n = 1;
 
 %busqueda de los tres maximos en ojos a intervalos fijos
-%SERIA BUENO a?adir condicion, si lo vas a marcar comprueba que la
+%SERIA BUENO añadir condicion, si lo vas a marcar comprueba que la
 %velocidad del maximo es sensiblemente (40?) superior a la del reflejo
 %(dato de la ganancia?)
 while n <= size(vhgenojoizq);
@@ -7509,8 +7507,6 @@ line (45:94,345,'color', 'black','LineWidth',2);
 line (95:134,345,'color', 'white','LineWidth',2);
 line (135:175,345,'color', 'black','LineWidth',2);
 
-%save('expScat.mat','vhgenojoizq','vhgencabizq');
-
 %ylim ([-75 350])
 
 set (handles.text30,'string',maxcabeza(actual,2));
@@ -7550,7 +7546,7 @@ listae= zeros(inutil,1);
 posg = [num2str(actual) '/' num2str(tam)];
 set(handles.text10,'string',posg);
 
-%Dibujar y c?lculos de grupo de impulso
+%Dibujar y cálculos de grupo de impulso
 
 n=1;
 n2=1;
@@ -7573,7 +7569,7 @@ plot(vhgencabizq,'color','blue');
 xlim ([0 175]);
 %ylim ([-75 350]);
 
-%Ajuste de matrices para c?lculos
+%Ajuste de matrices para cálculos
 t1=maxojo(:,2);
 v1=maxojo(:,1);
 t2=maxojo(:,4);
@@ -7650,7 +7646,7 @@ if a>1&&t3(1)==135
     v3(1)=[];
 end
 
-%El elemento 1 est? sin ajustar en la velocidad ??
+%El elemento 1 está sin ajustar en la velocidad ¿?
 [n,c]=size(v3);
 while n>1
     if v3(n)==0
@@ -7687,7 +7683,7 @@ if n>1&&v1(1)==0
     v1(1)=[];
 end
 
-%C?lculos coef.var
+%Cálculos coef.var
 
 [n,c]=size(t1);
 [n2,c]=size(t2);
@@ -8056,67 +8052,17 @@ function pushbutton17_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton17 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-question = questdlg('Do you want CLUSTER analysis or TAKE-OFF analysis of slow phase?','Slow Phase Extended Analysis','Cluster','Take-off','Cluster');
-if strcmp(question,'Cluster')
 try 
     SPV
 catch
    msgbox('Slow Phase Inspector is not avaliable', 'ERROR','error'); 
-end 
-end
-if strcmp(question,'Take-off')
-    try 
-    Toff
-catch
-   msgbox('Slow Phase Inspector is not avaliable', 'ERROR','error'); 
-end 
 end
 
-
-
-
-% --- Executes on button press in pushbutton20.
-function pushbutton20_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton20 (see GCBO)
+% --------------------------------------------------------------------
+function Untitled_19_Callback(hObject, eventdata, handles)
+% hObject    handle to Untitled_19 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-h = findobj(gcf,'type','axes');
-selected = findobj(h,'tag','impulso');
-fig2 = figure('visible','off');
-newax = copyobj(selected,fig2);
-set(newax, 'units', 'normalized', 'position', [0.13 0.11 0.775 0.815]);
-print(fig2,'-r300','-depsc2', 'Impulse');
-close(fig2);
-
-
-% --- Executes on button press in pushbutton21.
-function pushbutton21_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton21 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-h = findobj(gcf,'type','axes');
-selected = findobj(h,'tag','grupo');
-lines = findobj(selected,'type','line');
-%set(lines,'linewidth',1.25);
-fig3 = figure('visible','off');
-newax = copyobj(selected,fig3);
-set(newax, 'units', 'normalized', 'position', [0.13 0.11 0.775 0.815]);
-print(fig3,'-r300','-depsc2', 'Test');
-close(fig3);
-
-
-% --- Executes on button press in pushbutton22.
-function pushbutton22_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton22 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-h = findobj(gcf,'type','axes');
-selected = findobj(h,'tag','todos');
-fig4 = figure('visible','off');
-newax = copyobj(selected,fig4);
-set(newax, 'units', 'normalized', 'position', [0.13 0.11 0.775 0.815]);
-print(fig4,'-r300','-depsc2', 'Saccades');
-close(fig4);
 
 
 % --------------------------------------------------------------------
@@ -8162,6 +8108,7 @@ set(mTextBox,'FontSize',12)
 set(mTextBox,'Position',[5 5 400 25])
 set(figureFourier,'MenuBar','figure')
 
+
 % --------------------------------------------------------------------
 function Untitled_21_Callback(hObject, eventdata, handles)
 % hObject    handle to Untitled_21 (see GCBO)
@@ -8180,9 +8127,52 @@ save (archivo,'headData','eyeData')
 cd(dirinicial)
 
 
-% --- Executes on button press in pushbutton26.
-function pushbutton26_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton26 (see GCBO)
+% --- Executes on button press in pushbutton18.
+function pushbutton18_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton18 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+h = findobj(gcf,'type','axes');
+selected = findobj(h,'tag','impulso');
+fig2 = figure('visible','off');
+newax = copyobj(selected,fig2);
+set(newax, 'units', 'normalized', 'position', [0.13 0.11 0.775 0.815]);
+print(fig2,'-r300','-depsc2', 'Impulse');
+close(fig2);
+
+
+% --- Executes on button press in pushbutton19.
+function pushbutton19_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton19 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+h = findobj(gcf,'type','axes');
+selected = findobj(h,'tag','grupo');
+lines = findobj(selected,'type','line');
+%set(lines,'linewidth',1.25);
+fig3 = figure('visible','off');
+newax = copyobj(selected,fig3);
+set(newax, 'units', 'normalized', 'position', [0.13 0.11 0.775 0.815]);
+print(fig3,'-r300','-depsc2', 'Test');
+close(fig3);
+
+% --- Executes on button press in pushbutton20.
+function pushbutton20_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton20 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+h = findobj(gcf,'type','axes');
+selected = findobj(h,'tag','todos');
+fig4 = figure('visible','off');
+newax = copyobj(selected,fig4);
+set(newax, 'units', 'normalized', 'position', [0.13 0.11 0.775 0.815]);
+print(fig4,'-r300','-depsc2', 'Saccades');
+close(fig4);
+
+
+% --- Executes on button press in pushbutton21.
+function pushbutton21_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton21 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global vhgencabizq vhgenojoizq ganac
@@ -8203,41 +8193,3 @@ if strcmp(statistics,'Output Statistics')
     display((ganac)*0.0001,'AUC gain')
     display(std((ganac)*0.0001),'AUC SD')
 end
-
-
-% --- Executes on button press in pushbutton27.
-function pushbutton27_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton27 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-global isLeft
-tipo_act = get(handles.text19,'string');
-if strcmp(tipo_act, 'Test plane: SHIMP Lateral')
-    if get(handles.popupmenu2,'Value') == 1
-        isLeft = 1;
-    else
-        isLeft = 0;
-    end
-    shimp
-else
-    warndlg('The actual selected impulse is not a SHIMP impulse, please select a SHIMP impulse to run this mode','Not SHIMP')
-end
-% --- Executes on button press in pushbutton27.
-function Untitled_19_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton27 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-%To avoir menu warning
-
-
-% --- Executes on button press in pushbutton28.
-function pushbutton28_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton28 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-global vhgencabizq actual 
-hveloc=convangvel(vhgencabizq(:,actual),'deg/s','rad/s');
-[a,~] = size(hveloc);
-t = ((linspace(1,a,a)*0.004)-0.004).';
-hveloc(1) = 0;
-csvwrite('headimpulse.csv',[t,hveloc]);

@@ -1,3 +1,5 @@
+%Updated on 2020 to read native english CSV files with the collaboration of
+%Rachael Taylor
 function [t,e,h] = read(s)
 t = [];
 e = [];
@@ -13,8 +15,8 @@ readnow = 0;
 timeData = '';
 eyeData = '';
 headData = '';
+commaDelimiter = 0;
 while ischar(tline)
-    
     if readnow == 3
         timeData = tline;
     end
@@ -26,11 +28,17 @@ while ischar(tline)
         break
     end
     if s == 1
-        if strcmp(tline,'Test Type;VORS — Horizontal')||strcmp(tline,'Test Type;SRVO — Horizontal')||strcmp(tline,'Tipo de Prueba;SRVO — Horizontal')
+        if strcmp(tline,'Test Type;VORS — Horizontal')||strcmp(tline,'Test Type;SRVO — Horizontal')||strcmp(tline,'Tipo de Prueba;SRVO — Horizontal')||strcmp(tline,'Test Type,VORS — Horizontal')
+            if strcmp(tline,'Test Type,VORS — Horizontal')
+                commaDelimiter = 1;
+            end
             readnow = 1;
         end
     else
-        if strcmp(tline,'Test Type;VVOR — Horizontal')||strcmp(tline,'Tipo de Prueba;RVVO — Horizontal')||strcmp(tline,'Test Type;RVVO — Horizontal')
+        if strcmp(tline,'Test Type;VVOR — Horizontal')||strcmp(tline,'Tipo de Prueba;RVVO — Horizontal')||strcmp(tline,'Test Type;RVVO — Horizontal')||strcmp(tline,'Test Type,VVOR — Horizontal')
+            if strcmp(tline,'Test Type,VVOR — Horizontal')
+                commaDelimiter = 1;
+            end
             readnow = 1;
         end
     end
@@ -41,15 +49,24 @@ while ischar(tline)
     tline = fgetl(readFile);
 end
 fclose(readFile);
-timeData = strrep(timeData, ',', '.');
-timeData = strsplit(timeData,';');
-timeData = timeData(2:end);
-eyeData = strrep(eyeData, ',', '.');
-eyeData = strsplit(eyeData,';');
-eyeData = eyeData(2:end);
-headData = strrep(headData, ',', '.');
-headData = strsplit(headData,';');
-headData = headData(2:end);
+if commaDelimiter == 0
+    timeData = strrep(timeData, ',', '.');
+    timeData = strsplit(timeData,';');
+    timeData = timeData(2:end);
+    eyeData = strrep(eyeData, ',', '.');
+    eyeData = strsplit(eyeData,';');
+    eyeData = eyeData(2:end);
+    headData = strrep(headData, ',', '.');
+    headData = strsplit(headData,';');
+    headData = headData(2:end);
+else
+    timeData = strsplit(timeData,',');
+    timeData = timeData(2:end);
+    eyeData = strsplit(eyeData,',');
+    eyeData = eyeData(2:end);
+    headData = strsplit(headData,',');
+    headData = headData(2:end);
+end
 [~,b] = size(timeData);
 for n = 1:b-1
     t = vertcat(t,str2double(timeData{1,n}));

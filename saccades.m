@@ -11,9 +11,9 @@ else
     scrsz = get(groot,'ScreenSize');
 end
 if s == 1
-    figure2 = figure('Name','SACCADES VORS PLOT','NumberTitle','off','Position',[1 scrsz(4)/1.2 scrsz(3)/1.55 scrsz(4)/1.7]);
+    figure2 = figure('Name','SACCADES VORS ANALYSIS','NumberTitle','off','Position',[1 1 scrsz(3)/1.55 scrsz(4)/1.7]);
 else
-    figure2 = figure('Name','SACCADES VVOR PLOT','NumberTitle','off','Position',[1 scrsz(4)/1.2 scrsz(3)/1.55 scrsz(4)/1.7]);
+    figure2 = figure('Name','SACCADES VVOR ANALYSIS','NumberTitle','off','Position',[1 1 scrsz(3)/1.55 scrsz(4)/1.7]);
 end
 figure(figure2);
 %SACCADES plot
@@ -69,9 +69,9 @@ while pos < sizeHead
     elseif headSacc(pos) > 50
         sac100 = sac100 + 1;
     elseif headSacc(pos) > 25
-        sac50 = sac50 + 1;   
+        sac50 = sac50 + 1;
     elseif headSacc(pos) > 0
-        sac0 = sac0 + 1;  
+        sac0 = sac0 + 1;
     end
     pos = pos + 1;
 end
