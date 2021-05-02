@@ -4,7 +4,7 @@ ICS IMPULSE(TM) vHIT files enhanced exploration
 HITCal source code to explore vHIT files using MATLAB (PC/Windows version).
 
 New on this version:
-MacOS Branc 5_3 is now merged and adapted to this PC version
+MacOS Branch 5_3 is now merged and adapted to this PC version
 
 ## INSTALLATION & USE
 Copy all files to your MATLAB
