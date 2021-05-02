@@ -1,4 +1,5 @@
-% Jorge Rey Martinez 2021 version 2.0
+% Jorge Rey Martinez & María Moserrat Soriano 2021 version 2.0
+% Run the VVOR and VORS analysis routines
 s = 0;
 
 question = questdlg('Do you want to read the data from VVOR or from VVORS (suppressed) test?','Select test to read','VVOR','VORS (suppressed)','VVOR');

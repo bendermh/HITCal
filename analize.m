@@ -1,4 +1,5 @@
-% Jorge Rey Martinez 2021 version 2.0
+% Jorge Rey Martinez & María Moserrat Soriano 2021 version 2.0
+% VVOR AND VORS ANALYSIS
 % Inputs
 % t = time array
 % e = eye velocity array

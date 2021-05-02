@@ -1,4 +1,5 @@
-% Jorge Rey Martinez 2021
+% Jorge Rey Martinez & María Moserrat Soriano 2021
+% PR SCORE FOR VVOR TEST
 % Inputs
 % t = time array
 % e = eye velocity array
